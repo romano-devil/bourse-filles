@@ -5,15 +5,30 @@
     "lignes": [
       {
         "symbole": "GOOGL",
-        "montant_eur": 33.34
+        "montant_eur": 33.34,
+        "achat": {
+          "prix": 282.99,
+          "eurusd": 1.1169,
+          "nb_actions": 0.131586
+        }
       },
       {
         "symbole": "AAPL",
-        "montant_eur": 33.33
+        "montant_eur": 33.33,
+        "achat": {
+          "prix": 350.35,
+          "eurusd": 1.1169,
+          "nb_actions": 0.106255
+        }
       },
       {
         "symbole": "PEP",
-        "montant_eur": 33.33
+        "montant_eur": 33.33,
+        "achat": {
+          "prix": 133.89,
+          "eurusd": 1.1169,
+          "nb_actions": 0.278036
+        }
       }
     ]
   },
