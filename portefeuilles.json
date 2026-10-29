@@ -23,15 +23,30 @@
     "lignes": [
       {
         "symbole": "GOOGL",
-        "montant_eur": 33.34
+        "montant_eur": 30,
+        "achat": {
+          "prix": 282.08,
+          "eurusd": 1.1166,
+          "nb_actions": 0.118754
+        }
       },
       {
         "symbole": "SPOT",
-        "montant_eur": 33.33
+        "montant_eur": 30,
+        "achat": {
+          "prix": 555.95,
+          "eurusd": 1.1166,
+          "nb_actions": 0.060254
+        }
       },
       {
         "symbole": "ADS.DE",
-        "montant_eur": 33.33
+        "montant_eur": 40,
+        "achat": {
+          "prix": 167.15,
+          "eurusd": 1.0,
+          "nb_actions": 0.239306
+        }
       }
     ]
   }
