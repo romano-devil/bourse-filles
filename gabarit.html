@@ -1,0 +1,124 @@
+<title>Portefeuille de {{PRENOM}}</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : une colonne étroite façon relevé de compte, le chiffre clé en tête, puis une fiche par action */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --ink: #17201c;
+  --muted: #5d6a63;
+  --line: #dce2dd;
+  --accent: #1f5c4a;
+  --up: #12825a;
+  --down: #c2352b;
+  --up-soft: #e1f2e9;
+  --down-soft: #fbe6e3;
+  --f-display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body: "Figtree", system-ui, -apple-system, sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111613; --surface: #19201c; --ink: #e8eee9; --muted: #98a69e; --line: #2b3530;
+    --accent: #7fcfb1; --up: #4fcf95; --down: #ff7b6e; --up-soft: #183a2a; --down-soft: #45201c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111613; --surface: #19201c; --ink: #e8eee9; --muted: #98a69e; --line: #2b3530;
+  --accent: #7fcfb1; --up: #4fcf95; --down: #ff7b6e; --up-soft: #183a2a; --down-soft: #45201c;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 16px/1.5 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+}
+main { max-width: 760px; margin: 0 auto; display: grid; gap: 28px; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+
+header { display: grid; gap: 6px; }
+header h1 { font-size: clamp(30px, 6vw, 44px); font-weight: 700; line-height: 1.1; }
+header p { margin: 0; color: var(--muted); }
+
+.total { display: grid; gap: 4px; }
+.total .valeur { font-family: var(--f-display); font-weight: 700; font-size: clamp(48px, 13vw, 84px); line-height: 1; font-variant-numeric: tabular-nums; }
+.total .ecart { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 17px; }
+.pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-family: var(--f-num); font-size: 15px; font-weight: 500; }
+.pill.up { background: var(--up-soft); color: var(--up); }
+.pill.down { background: var(--down-soft); color: var(--down); }
+.pill.flat { background: var(--line); color: var(--muted); }
+
+.panneau { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 12px; min-width: 0; }
+.panneau h2 { font-size: 20px; font-weight: 600; }
+.vide { color: var(--muted); font-size: 15px; margin: 0; }
+svg text { font-family: var(--f-num); font-size: 11px; fill: var(--muted); }
+
+.actions { display: grid; gap: 14px; }
+.action { display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; }
+.action .titre { display: grid; gap: 2px; min-width: 0; }
+.action h3 { font-size: 21px; font-weight: 600; }
+.action .meta { color: var(--muted); font-size: 13px; }
+.action .metier { grid-column: 1 / -1; margin: 0; font-size: 15px; }
+.action .droite { text-align: right; display: grid; gap: 4px; justify-items: end; align-content: start; }
+.action .droite .v { font-family: var(--f-num); font-size: 22px; font-weight: 500; }
+.chiffres { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; border-top: 1px solid var(--line); padding-top: 12px; }
+.chiffres div { display: grid; gap: 2px; min-width: 0; }
+.chiffres dt { font-size: 12px; color: var(--muted); }
+.chiffres dd { margin: 0; font-family: var(--f-num); font-size: 14px; }
+.spark { grid-column: 1 / -1; }
+
+.lexique { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 24px; }
+.lexique dt { font-weight: 600; font-family: var(--f-display); font-size: 17px; }
+.lexique dd { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+footer { color: var(--muted); font-size: 13px; }
+
+@media (max-width: 560px) {
+  .chiffres { grid-template-columns: repeat(2, 1fr); }
+  .lexique { grid-template-columns: 1fr; }
+}
+</style>
+
+<main>
+  <header>
+    <span class="eyebrow">Mon portefeuille d'actions</span>
+    <h1>Le portefeuille de {{PRENOM}}</h1>
+    <p>{{SOUS_TITRE}}</p>
+  </header>
+
+  <section class="total" aria-label="Valeur totale">
+    <span class="eyebrow">{{LIBELLE_TOTAL}}</span>
+    <div class="valeur">{{VALEUR}}</div>
+    <div class="ecart">{{ECART}}</div>
+  </section>
+
+  <section class="panneau">
+    <h2>L'évolution depuis ton achat</h2>
+    {{GRAPHIQUE}}
+  </section>
+
+  <section class="actions" aria-label="Tes actions">
+{{ACTIONS}}
+  </section>
+
+  <section class="panneau">
+    <h2>Les mots à connaître</h2>
+    <dl class="lexique">
+      <div><dt>Action</dt><dd>Un petit morceau d'une entreprise. Si l'entreprise gagne en valeur, ton morceau aussi.</dd></div>
+      <div><dt>Cours</dt><dd>Le prix d'une action à un moment donné. Il bouge toute la journée quand la bourse est ouverte.</dd></div>
+      <div><dt>Plus-value / moins-value</dt><dd>Ce que tu gagnes (ou perds) par rapport à ton prix d'achat. Elle n'est réelle que si tu vends.</dd></div>
+      <div><dt>Fraction d'action</dt><dd>Une action Google coûte plusieurs centaines d'euros : avec 33 €, tu en possèdes une fraction.</dd></div>
+      <div><dt>Effet de change</dt><dd>Les actions américaines sont en dollars. Si le dollar baisse face à l'euro, elles valent moins en euros, même si leur cours ne bouge pas.</dd></div>
+      <div><dt>Diversifier</dt><dd>Répartir son argent sur plusieurs entreprises pour ne pas tout perdre si l'une d'elles va mal.</dd></div>
+    </dl>
+  </section>
+
+  <footer>{{PIED}}</footer>
+</main>

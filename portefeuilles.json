@@ -1,0 +1,38 @@
+{
+  "juliette": {
+    "prenom": "Juliette",
+    "debut": "2026-10-29",
+    "lignes": [
+      {
+        "symbole": "GOOGL",
+        "montant_eur": 33.34
+      },
+      {
+        "symbole": "AAPL",
+        "montant_eur": 33.33
+      },
+      {
+        "symbole": "PEP",
+        "montant_eur": 33.33
+      }
+    ]
+  },
+  "ines": {
+    "prenom": "Ines",
+    "debut": "2026-10-29",
+    "lignes": [
+      {
+        "symbole": "GOOGL",
+        "montant_eur": 33.34
+      },
+      {
+        "symbole": "SPOT",
+        "montant_eur": 33.33
+      },
+      {
+        "symbole": "ADS.DE",
+        "montant_eur": 33.33
+      }
+    ]
+  }
+}

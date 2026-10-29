@@ -1,0 +1,45 @@
+name: Mise à jour des cours
+
+on:
+  schedule:
+    - cron: "30 15 * * 1-5"  # après la clôture de Francfort
+    - cron: "45 21 * * 1-5"  # après la clôture de Wall Street
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Récupérer les cours et générer les pages
+        run: python3 build.py
+      - name: Enregistrer les prix d'achat figés
+        run: |
+          if ! git diff --quiet portefeuilles.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Prix d'achat figés" portefeuilles.json
+            git push
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploiement
+        uses: actions/deploy-pages@v4
